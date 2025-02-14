@@ -100,6 +100,7 @@ class MovieListResponseSchema(BaseModel):
         "from_attributes": True
     }
 
+
 class MovieCreateSchema(BaseModel):
     name: str
     date: date
@@ -108,7 +109,7 @@ class MovieCreateSchema(BaseModel):
     status: MovieStatusEnum
     budget: float = Field(..., ge=0)
     revenue: float = Field(..., ge=0)
-    country: str
+    country: str = Field(..., max_length=3)
     genres: List[str]
     actors: List[str]
     languages: List[str]
@@ -140,4 +141,3 @@ class MovieUpdateSchema(BaseModel):
     model_config = {
         "from_attributes": True
     }
-
